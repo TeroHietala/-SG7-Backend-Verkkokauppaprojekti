@@ -14,7 +14,7 @@ insert into category(name) value ('bassot');
 insert into category(name) value ('viulut');
 insert into category(name) value ('muut');
 
-create table tuotteet (
+create table product (
     id int primary key auto_increment,
     name varchar(100) not null,
     price double (10,2) not null,
@@ -24,3 +24,6 @@ create table tuotteet (
     foreign key (category_id) references category(id)
     on delete restrict
 );
+
+insert into product(name,price,category_id) value ('testi kitara',10,1);
+insert into product(name,price,category_id) value ('testi kitara1',20,1);
