@@ -27,3 +27,15 @@ create table product (
 
 insert into product(name,price,category_id) value ('testi kitara',10,1);
 insert into product(name,price,category_id) value ('testi kitara1',20,1);
+
+insert into product(name,price,category_id) value ('testi kitara',10,2);
+insert into product(name,price,category_id) value ('testi kitara1',20,2);
+
+insert into product(name,price,category_id) value ('testi bassot',10,3);
+insert into product(name,price,category_id) value ('testi bassot1',20,3);
+
+insert into product(name,price,category_id) value ('testi viulu',10,4);
+insert into product(name,price,category_id) value ('testi viulu1',20,4);
+
+insert into product(name,price,category_id) value ('testi muut',10,5);
+insert into product(name,price,category_id) value ('testi muut1',20,5);
