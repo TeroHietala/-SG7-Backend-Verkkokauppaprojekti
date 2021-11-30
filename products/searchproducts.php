@@ -8,7 +8,7 @@ $category_id = $parameters[1];
 
 try {
     $db = openDb();
-    selectAsJson($db, "select * from product");
+    selectAsJson($db, "select id,name,price,image,'0' as 'category_id' from discount UNION SELECT * from product");
 } 
 catch (PDOException $pdoex) {
     returnError($pdoex);
