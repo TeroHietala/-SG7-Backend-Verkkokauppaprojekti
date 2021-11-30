@@ -31,17 +31,20 @@ create table product (
 
 -- luo tarjous taulun
 create table discount (
-    id int primary key auto_increment,
+    id int auto_increment,
     name varchar(100) not null,
     price double (10,2) not null,
-    image varchar(50)
-);
+    image varchar(50),
+    PRIMARY KEY (id)
+    ) AUTO_INCREMENT=10000;
 
 -- lisää tarjoustuotteita tarjoustauluun
 insert into discount(name,price) value ('tarjous kitara',3500);
 insert into discount(name,price) value ('tarjous rumpu',5800);
 insert into discount(name,price) value ('tarjous basso',1200);
 insert into discount(name,price) value ('tarjous viulu',10250);
+
+
 
 -- Lisää testi tuotteita tuote tauluun
 insert into product(name,price,category_id) value ('testi kitara',10,1);
