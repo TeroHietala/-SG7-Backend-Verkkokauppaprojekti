@@ -39,28 +39,28 @@ create table discount (
     ) AUTO_INCREMENT=10000;
 
 -- lisää tarjoustuotteita tarjoustauluun
-insert into discount(name,price) value ('tarjous kitara',3500);
-insert into discount(name,price) value ('tarjous rumpu',5800);
-insert into discount(name,price) value ('tarjous basso',1200);
-insert into discount(name,price) value ('tarjous viulu',10250);
+insert into discount(name,price,image) value ('Fender Stratocaster',700,'tarjouskitara.jpg');
+insert into discount(name,price,image) value ('Yamaha rumpusetti',500,'tarjosrumpu.jpg');
+insert into discount(name,price,image) value ('Ibanez sähköbasso',200,'tarjousbasso.jpg');
+insert into discount(name,price,image) value ('Stagg viulu',400,'tarjousviulu.jpg');
 
 
 
 -- Lisää testi tuotteita tuote tauluun
-insert into product(name,price,category_id) value ('testi kitara',10,1);
-insert into product(name,price,category_id) value ('testi kitara1',20,1);
+insert into product(name,price,image,category_id) value ('Les Paul sähkökitara',400,'kitara1.jpg',1);
+insert into product(name,price,image,category_id) value ('Teräskielinen akustinen kitara',300,'kitara2.jpg',1);
 
-insert into product(name,price,category_id) value ('testi rummut',10,2);
-insert into product(name,price,category_id) value ('testi rummut1',20,2);
+insert into product(name,price,image,category_id) value ('Rumpusetti',500,'akustinenrumpu1.jpg',2);
+insert into product(name,price,image,category_id) value ('Sähkörumpusetti',400,'sähkörumpu1.jpg',2);
 
-insert into product(name,price,category_id) value ('testi bassot',10,3);
-insert into product(name,price,category_id) value ('testi bassot1',20,3);
+insert into product(name,price,image,category_id) value ('Fender sähköbasso',350,'basso1.jpg',3);
+insert into product(name,price,image,category_id) value ('Yamaha sähköbasso',250,'basso2.jpg',3);
 
-insert into product(name,price,category_id) value ('testi viulu',10,4);
-insert into product(name,price,category_id) value ('testi viulu1',20,4);
+insert into product(name,price,image,category_id) value ('Yamaha viulu',500,'viulu1.jpg',4);
+insert into product(name,price,image,category_id) value ('Höfner viulu',600,'viulu2.jpg',4);
 
-insert into product(name,price,category_id) value ('testi muut',10,5);
-insert into product(name,price,category_id) value ('testi muut1',20,5);
+insert into product(name,price,image,category_id) value ('Akustinen piano',1000,'grandpiano1.jpg',5);
+insert into product(name,price,image,category_id) value ('Digitaalipiano',200,'electricpiano.jpg',5);
 
 -- Luo asiakas taulun
 create table customers (
