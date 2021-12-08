@@ -81,3 +81,16 @@ create table customers (
 insert into customers(first_name,last_name,mail_username,password, address,zip,city,phone) value ('Esko','Esimerkki','epeli@eskondomain.ru','Kappasvaan1234','Erppakuja 1','99099','Inari','0453589541');
 insert into customers(first_name,last_name,mail_username,password, address,zip,city,phone) value ('Pekka','Perusmerkki','peke@eskondomain.ru','Joopasenjoo1234','Erppakuja 100','99099','Inari','04012312312');
 
+--Luodaan taulu ContactUs palautteille
+create table Contacts (
+    idnro int auto_increment,
+    fname varchar(20) not null,
+    responsemail varchar(50),
+    feedback varchar(10000) not null,
+    PRIMARY KEY (idnro),
+    index idnro(idnro)
+);   
+
+--Lisätään esimerkkejä palautteeseen
+insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
+insert into Contacts(fname,responsemail,feedback) value ('Maija','','Asiakaspalvelu toimii hyvin, sain tuotteen jonka halusin ja se tuli perille nopeasti');
