@@ -94,3 +94,19 @@ create table Contacts (
 --Lisätään esimerkkejä palautteeseen
 insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
 insert into Contacts(fname,responsemail,feedback) value ('Maija','','Asiakaspalvelu toimii hyvin, sain tuotteen jonka halusin ja se tuli perille nopeasti');
+
+--Lisätään esimerkkejä palautteeseen
+insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
+insert into Contacts(fname,responsemail,feedback) value ('Maija','','Asiakaspalvelu toimii hyvin, sain tuotteen jonka halusin ja se tuli perille nopeasti');
+
+--Luo admin taulun
+create table admin (
+    id int PRIMARY KEY auto_increment,
+    first_name varchar(20) not null,
+    last_name varchar(20) not null,
+    username varchar(50) not null UNIQUE,
+    password varchar(200)
+)   auto_increment=100;
+
+--Luo yksi testikäyttäjä ilman salasanan hashiä
+insert into admin(first_name,last_name,username,password) value ('admin','Testi','admin','erittäinsalainen123');
