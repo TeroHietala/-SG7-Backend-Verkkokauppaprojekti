@@ -40,7 +40,7 @@ create table discount (
 
 -- lisää tarjoustuotteita tarjoustauluun
 insert into discount(name,price,image) value ('Fender Stratocaster',700,'tarjouskitara.jpg');
-insert into discount(name,price,image) value ('Yamaha rumpusetti',500,'tarjosrumpu.jpg');
+insert into discount(name,price,image) value ('Yamaha rumpusetti',500,'tarjousrumpu.jpg');
 insert into discount(name,price,image) value ('Ibanez sähköbasso',200,'tarjousbasso.jpg');
 insert into discount(name,price,image) value ('Stagg viulu',400,'tarjousviulu.jpg');
 
