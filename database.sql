@@ -110,3 +110,27 @@ create table admin (
 
 --Luo yksi testikäyttäjä ilman salasanan hashiä
 insert into admin(first_name,last_name,username,password) value ('admin','Testi','admin','erittäinsalainen123');
+
+-- Lisää product tauluun description sarakkeen
+ALTER TABLE product
+ADD description varchar(3600);
+
+-- Lisää product tauluun description sarakkeen
+ALTER TABLE discount
+ADD description varchar(3600);
+
+-- Luo tilaus taulun
+create table orders (
+    ordernro INT(5) auto_increment,
+    cust_nro int,
+    first_name varchar(20) not null,
+    last_name varchar(20) not null,
+    product_id int not null,
+    kpl INT(3) not null,
+    PRIMARY KEY (ordernro),
+    FOREIGN KEY (cust_nro) REFERENCES customers(cust_nro)
+)   auto_increment=1000;
+
+-- lisää tilauksia tarjoustauluun
+insert into orders(first_name, last_name, product_id, kpl) value ('Pekka','Joutilainen','1', '15');
+insert into orders(first_name, last_name, product_id, kpl) value ('Juoni','Jäätävä', '1', '15');
