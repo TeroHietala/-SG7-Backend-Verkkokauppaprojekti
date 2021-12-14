@@ -1,4 +1,6 @@
 <?php
+// ei käytössä ainakaan vielä
+
 require_once '../inc/functions.php';
 require_once '../inc/headers.php';
 
@@ -8,7 +10,7 @@ $category_id = $parameters[1];
 
 try {
     $db = openDb();
-    selectAsJson($db, "select id,name,price,image,description,'0' as 'category_id' from discount UNION SELECT * from product");
+    selectAsJson($db, "select * from category");
 } 
 catch (PDOException $pdoex) {
     returnError($pdoex);

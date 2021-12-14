@@ -5,23 +5,21 @@ require('../inc/functions.php');
 
 $db = openDb();
 $json = json_decode(file_get_contents('php://input'), true);
-$mail_username = filter_var($json['mail_username'], FILTER_SANITIZE_EMAIL);
+$username = filter_var($json['username'], FILTER_SANITIZE_EMAIL);
 $password = filter_var($json['password'], FILTER_SANITIZE_STRING);
-//$first_name = filter_var($json['first_name'], FILTER_SANITIZE_STRING);
 try{
-    $sql = "SELECT password FROM customers 
-    WHERE mail_username=?";
+    $sql = "SELECT password FROM admin
+    WHERE username=?";
     $prepare = $db->prepare($sql);
-    $prepare->execute(array($mail_username));
+    $prepare->execute(array($username));
     //Haetaan tulokser fetch functiolla.
     $rows = $prepare->fetchAll();
-    //$data = array('first_name' => $first_name);
     //Etsitään salasanarivi ja jos palautetaan true arvo jos kaikki ok.
     foreach($rows as $row){
         $pw = $row["password"];
         //purkaa salasanan HASHin
         if(password_verify($password, $pw) ){ 
-            selectAsJson($db, "SELECT cust_nro,first_name,last_name FROM customers WHERE mail_username = '$mail_username'");
+            selectAsJson($db, "SELECT first_name,last_name FROM admin WHERE username = '$username'");
             
         }
     }
