@@ -32,10 +32,11 @@ try {
 
     //Lisätään tilaus rivit loopin kautta ostoskoriin -> array
     foreach ($cart as $product) {
-        $sql = "insert into order_row(order_id, product_id) VALUES ("
+        $sql = "insert into order_row(order_id, product_id, amount) VALUES ("
         .
             $order_id . "," . 
-            $product->id 
+            $product->id . "," . 
+            $product->amount
         . ")";
         executeInsert($db, $sql);
     }
