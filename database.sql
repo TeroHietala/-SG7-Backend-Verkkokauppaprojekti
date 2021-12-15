@@ -120,26 +120,24 @@ ALTER TABLE discount
 ADD description varchar(3600);
 
 -- Luo tilaus taulun
-create table orders (
-    ordernro INT(5) auto_increment,
-    cust_nro int,
-    PRIMARY KEY (ordernro),
-    FOREIGN KEY (cust_nro) REFERENCES customers(cust_nro)
+create table `order` (
+    id INT primary key auto_increment,
+    customers_cust_nro int not null,
+    FOREIGN KEY (customers_cust_nro) REFERENCES customers(cust_nro)
+    on delete restrict
 )   auto_increment=1000;
-
--- lisää tilauksia tauluun
-insert into orders() value ();
-insert into orders() value ();
 
 -- Luo tilausrivi taulun
-create table orderline (
-    ordernro INT(5) auto_increment,
-    product_id int not null,
-    kpl INT(3) not null,
-    PRIMARY KEY (ordernro),
-    FOREIGN KEY (ordernro) REFERENCES orders(ordernro)
-)   auto_increment=1000;
+create table order_row (
+    order_id int not null, 
+    index order_id(order_id),
+    foreign key (order_id) references `order`(id)
+    on delete restrict,
+    product_id int not null, 
+    index product_id(product_id),
+   	FOREIGN KEY (product_id) references product(id)
+       on delete restrict
 
--- lisää tilauksia tarjoustauluun
-insert into orderline(ordernro, product_id, kpl) value ('1000','1','1');
-insert into orderline(ordernro, product_id, kpl) value ('1001','1','15');
+)
+
+

@@ -6,8 +6,8 @@ $input = json_decode(file_get_contents('php://input'));
 
 $first_name = filter_var($input->first_name, FILTER_SANITIZE_STRING);
 $last_name = filter_var($input->last_name, FILTER_SANITIZE_STRING);
-$product_id = filter_var($input->product_id, FILTER_SANITIZE_NUMBER_INT);
-$kpl = filter_var($input->kpl, FILTER_SANITIZE_NUMBER_INT);
+$address = filter_var($input->address, FILTER_SANITIZE_STRING);
+$cart = $input->cart;
 
 $db = null;
 
@@ -17,34 +17,32 @@ try {
     //oston database yhteys 
     $db->beginTransaction();
     //Ostajan lisäys
-    $sql = "insert into customers(first_name, last_name) VALUES
+    $sql = "insert into customers(first_name, last_name, address) VALUES
     ('" .
         filter_var($first_name, FILTER_SANITIZE_STRING) . "','" .
-        filter_var($last_name, FILTER_SANITIZE_STRING)
+        filter_var($last_name, FILTER_SANITIZE_STRING) . "','" .
+        filter_var($address, FILTER_SANITIZE_STRING)
         . "')";
 
-    $cust_nro = executeInsert($db, $sql);
+    $customers_cust_nro = executeInsert($db, $sql);
 
     //insert tilaus
-    $sql = "insert into orders(cust_nro) VALUES ($cust_nro)";
-    
-    $ordernro = executeInsert($db, $sql);
+    $sql = "insert into `order`(customers_cust_nro) VALUES ($customers_cust_nro)";
+    $order_id = executeInsert($db, $sql);
 
     //Lisätään tilaus rivit loopin kautta ostoskoriin -> array
-
-        $sql = "insert into orderline(ordernro, product_id, kpl) VALUES ($ordernro,
-        '" .
-        filter_var($product_id, FILTER_SANITIZE_STRING) . "','" .
-        filter_var($kpl, FILTER_SANITIZE_STRING)
-    .   "')";
-
+    foreach ($cart as $product) {
+        $sql = "insert into order_row(order_id, product_id) VALUES ("
+        .
+            $order_id . "," . 
+            $product->id 
+        . ")";
         executeInsert($db, $sql);
-
-
+    }
 
     $db->commit();
     header('HHTP/1.1 200 OK');
-    $data = array('id' => $cust_nro);
+    $data = array('id' => $customers_cust_nro);
     echo json_encode($data);
 }
     catch (PDOException $pdoex) {
