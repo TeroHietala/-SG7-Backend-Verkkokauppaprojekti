@@ -40,7 +40,7 @@ create table discount (
 
 -- lisää tarjoustuotteita tarjoustauluun
 insert into discount(name,price,image) value ('Fender Stratocaster',700,'tarjouskitara.jpg');
-insert into discount(name,price,image) value ('Yamaha rumpusetti',500,'tarjosrumpu.jpg');
+insert into discount(name,price,image) value ('Yamaha rumpusetti',500,'tarjousrumpu.jpg');
 insert into discount(name,price,image) value ('Ibanez sähköbasso',200,'tarjousbasso.jpg');
 insert into discount(name,price,image) value ('Stagg viulu',400,'tarjousviulu.jpg');
 
@@ -81,7 +81,7 @@ create table customers (
 insert into customers(first_name,last_name,mail_username,password, address,zip,city,phone) value ('Esko','Esimerkki','epeli@eskondomain.ru','Kappasvaan1234','Erppakuja 1','99099','Inari','0453589541');
 insert into customers(first_name,last_name,mail_username,password, address,zip,city,phone) value ('Pekka','Perusmerkki','peke@eskondomain.ru','Joopasenjoo1234','Erppakuja 100','99099','Inari','04012312312');
 
---Luodaan taulu ContactUs palautteille
+-- Luodaan taulu ContactUs palautteille
 create table Contacts (
     idnro int auto_increment,
     fname varchar(20) not null,
@@ -91,15 +91,15 @@ create table Contacts (
     index idnro(idnro)
 );   
 
---Lisätään esimerkkejä palautteeseen
+-- Lisätään esimerkkejä palautteeseen
 insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
 insert into Contacts(fname,responsemail,feedback) value ('Maija','','Asiakaspalvelu toimii hyvin, sain tuotteen jonka halusin ja se tuli perille nopeasti');
 
---Lisätään esimerkkejä palautteeseen
+-- Lisätään esimerkkejä palautteeseen
 insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
 insert into Contacts(fname,responsemail,feedback) value ('Maija','','Asiakaspalvelu toimii hyvin, sain tuotteen jonka halusin ja se tuli perille nopeasti');
 
---Luo admin taulun
+-- Luo admin taulun
 create table admin (
     id int PRIMARY KEY auto_increment,
     first_name varchar(20) not null,
@@ -108,7 +108,7 @@ create table admin (
     password varchar(200)
 )   auto_increment=100;
 
---Luo yksi testikäyttäjä ilman salasanan hashiä
+-- Luo yksi testikäyttäjä ilman salasanan hashiä
 insert into admin(first_name,last_name,username,password) value ('admin','Testi','admin','erittäinsalainen123');
 
 -- Lisää product tauluun description sarakkeen
