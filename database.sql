@@ -137,7 +137,4 @@ create table order_row (
     index product_id(product_id),
    	FOREIGN KEY (product_id) references product(id)
        on delete restrict
-
 )
-
-
