@@ -81,7 +81,7 @@ create table customers (
 insert into customers(first_name,last_name,mail_username,password, address,zip,city,phone) value ('Esko','Esimerkki','epeli@eskondomain.ru','Kappasvaan1234','Erppakuja 1','99099','Inari','0453589541');
 insert into customers(first_name,last_name,mail_username,password, address,zip,city,phone) value ('Pekka','Perusmerkki','peke@eskondomain.ru','Joopasenjoo1234','Erppakuja 100','99099','Inari','04012312312');
 
---Luodaan taulu ContactUs palautteille
+-- Luodaan taulu ContactUs palautteille
 create table Contacts (
     idnro int auto_increment,
     fname varchar(20) not null,
@@ -91,15 +91,15 @@ create table Contacts (
     index idnro(idnro)
 );   
 
---Lisätään esimerkkejä palautteeseen
+-- Lisätään esimerkkejä palautteeseen
 insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
 insert into Contacts(fname,responsemail,feedback) value ('Maija','','Asiakaspalvelu toimii hyvin, sain tuotteen jonka halusin ja se tuli perille nopeasti');
 
---Lisätään esimerkkejä palautteeseen
+-- Lisätään esimerkkejä palautteeseen
 insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
 insert into Contacts(fname,responsemail,feedback) value ('Maija','','Asiakaspalvelu toimii hyvin, sain tuotteen jonka halusin ja se tuli perille nopeasti');
 
---Luo admin taulun
+-- Luo admin taulun
 create table admin (
     id int PRIMARY KEY auto_increment,
     first_name varchar(20) not null,
@@ -108,7 +108,7 @@ create table admin (
     password varchar(200)
 )   auto_increment=100;
 
---Luo yksi testikäyttäjä ilman salasanan hashiä
+-- Luo yksi testikäyttäjä ilman salasanan hashiä
 insert into admin(first_name,last_name,username,password) value ('admin','Testi','admin','erittäinsalainen123');
 
 -- Lisää product tauluun description sarakkeen
@@ -120,17 +120,22 @@ ALTER TABLE discount
 ADD description varchar(3600);
 
 -- Luo tilaus taulun
-create table orders (
-    ordernro INT(5) auto_increment,
-    cust_nro int,
-    first_name varchar(20) not null,
-    last_name varchar(20) not null,
-    product_id int not null,
-    kpl INT(3) not null,
-    PRIMARY KEY (ordernro),
-    FOREIGN KEY (cust_nro) REFERENCES customers(cust_nro)
+create table `order` (
+    id INT primary key auto_increment,
+    customers_cust_nro int not null,
+    FOREIGN KEY (customers_cust_nro) REFERENCES customers(cust_nro)
+    on delete restrict
 )   auto_increment=1000;
 
--- lisää tilauksia tarjoustauluun
-insert into orders(first_name, last_name, product_id, kpl) value ('Pekka','Joutilainen','1', '15');
-insert into orders(first_name, last_name, product_id, kpl) value ('Juoni','Jäätävä', '1', '15');
+-- Luo tilausrivi taulun
+create table order_row (
+    order_id int not null, 
+    index order_id(order_id),
+    foreign key (order_id) references `order`(id)
+    on delete restrict,
+    product_id int not null, 
+    amount int not null,
+    index product_id(product_id),
+   	FOREIGN KEY (product_id) references product(id)
+       on delete restrict
+)
