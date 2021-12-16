@@ -121,7 +121,7 @@ ALTER TABLE discount
 ADD description varchar(3600);
 
 -- Luo tilaus taulun
-create table `order` (
+create table orders (
     id INT primary key auto_increment,
     customers_cust_nro int not null,
     FOREIGN KEY (customers_cust_nro) REFERENCES customers(cust_nro)
@@ -132,7 +132,7 @@ create table `order` (
 create table order_row (
     order_id int not null, 
     index order_id(order_id),
-    foreign key (order_id) references `order`(id)
+    foreign key (order_id) references orders(id)
     on delete restrict,
     product_id int not null, 
     amount int not null,
