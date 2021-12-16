@@ -41,7 +41,7 @@ create table discount (
 
 -- lisää tarjoustuotteita tarjoustauluun
 insert into discount(name,price,image) value ('Fender Stratocaster',700,'tarjouskitara.jpg');
-insert into discount(name,price,image) value ('Yamaha rumpusetti',500,'tarjosrumpu.jpg');
+insert into discount(name,price,image) value ('Yamaha rumpusetti',500,'tarjousrumpu.jpg');
 insert into discount(name,price,image) value ('Ibanez sähköbasso',200,'tarjousbasso.jpg');
 insert into discount(name,price,image) value ('Stagg viulu',400,'tarjousviulu.jpg');
 
@@ -135,6 +135,7 @@ create table order_row (
     foreign key (order_id) references `order`(id)
     on delete restrict,
     product_id int not null, 
+    amount int not null,
     index product_id(product_id),
    	FOREIGN KEY (product_id) references product(id)
        on delete restrict
