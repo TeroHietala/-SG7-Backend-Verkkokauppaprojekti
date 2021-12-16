@@ -7,15 +7,16 @@ use verkkokauppa;
 -- Tekee kategoriat taulun
 create table category (
     id int primary key auto_increment,
-    name varchar(30) not null
+    name varchar(30) not null,
+    image varchar(50)
 );
 
 -- Lisää kategoriat tauluun tuoteryhmät
-insert into category(name) value ('kitarat');
-insert into category(name) value ('rummut');
-insert into category(name) value ('bassot');
-insert into category(name) value ('viulut');
-insert into category(name) value ('muut');
+insert into category(name,image) value ('Kitarat','etusivu_kitara.jpg');
+insert into category(name,image) value ('Rummut','etusivu_rumpu.jpg');
+insert into category(name,image) value ('Bassot','etusivu_basso.jpg');
+insert into category(name,image) value ('Viulut','etusivu_viulu.jpg');
+insert into category(name,image) value ('Muut soittimet','etusivu_muut.jpg');
 
 -- luo tuote taulun
 create table product (
