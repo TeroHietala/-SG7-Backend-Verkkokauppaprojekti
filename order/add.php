@@ -27,7 +27,7 @@ try {
     $customers_cust_nro = executeInsert($db, $sql);
 
     //insert tilaus
-    $sql = "insert into `order`(customers_cust_nro) VALUES ($customers_cust_nro)";
+    $sql = "insert into orders(customers_cust_nro) VALUES ($customers_cust_nro)";
     $order_id = executeInsert($db, $sql);
 
     //Lisätään tilaus rivit loopin kautta ostoskoriin -> array
