@@ -7,6 +7,10 @@ $input = json_decode(file_get_contents('php://input'));
 $first_name = filter_var($input->first_name, FILTER_SANITIZE_STRING);
 $last_name = filter_var($input->last_name, FILTER_SANITIZE_STRING);
 $address = filter_var($input->address, FILTER_SANITIZE_STRING);
+$mail = filter_var($input->mail, FILTER_SANITIZE_STRING);
+$zip = filter_var($input->zip, FILTER_SANITIZE_STRING);
+$city = filter_var($input->city, FILTER_SANITIZE_STRING);
+$phone = filter_var($input->phone, FILTER_SANITIZE_STRING);
 $cart = $input->cart;
 
 $db = null;
@@ -17,11 +21,15 @@ try {
     //oston database yhteys 
     $db->beginTransaction();
     //Ostajan lisäys
-    $sql = "insert into customers(first_name, last_name, address) VALUES
+    $sql = "insert into customers(first_name, last_name,mail_username, address, zip, city, phone) VALUES
     ('" .
         filter_var($first_name, FILTER_SANITIZE_STRING) . "','" .
         filter_var($last_name, FILTER_SANITIZE_STRING) . "','" .
-        filter_var($address, FILTER_SANITIZE_STRING)
+        filter_var($mail, FILTER_SANITIZE_STRING) . "','" .
+        filter_var($address, FILTER_SANITIZE_STRING) . "','" .
+        filter_var($zip, FILTER_SANITIZE_STRING) . "','" .
+        filter_var($city, FILTER_SANITIZE_STRING) . "','" .
+        filter_var($phone, FILTER_SANITIZE_STRING)
         . "')";
 
     $customers_cust_nro = executeInsert($db, $sql);

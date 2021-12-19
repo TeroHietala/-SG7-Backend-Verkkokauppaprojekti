@@ -73,7 +73,7 @@ create table customers (
     address varchar(50) not null,
     zip INT(5) not null,
     city varchar(15) not null,
-    phone INT(10) not null,
+    phone CHAR(10) not null,
     PRIMARY KEY (cust_nro),
     index cust_nro(cust_nro)
 )   auto_increment=1000;
@@ -91,10 +91,6 @@ create table Contacts (
     PRIMARY KEY (idnro),
     index idnro(idnro)
 );   
-
--- Lisätään esimerkkejä palautteeseen
-insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
-insert into Contacts(fname,responsemail,feedback) value ('Maija','','Asiakaspalvelu toimii hyvin, sain tuotteen jonka halusin ja se tuli perille nopeasti');
 
 -- Lisätään esimerkkejä palautteeseen
 insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
