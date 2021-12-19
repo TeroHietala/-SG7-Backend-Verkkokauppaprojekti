@@ -96,10 +96,6 @@ create table Contacts (
 insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
 insert into Contacts(fname,responsemail,feedback) value ('Maija','','Asiakaspalvelu toimii hyvin, sain tuotteen jonka halusin ja se tuli perille nopeasti');
 
--- Lisätään esimerkkejä palautteeseen
-insert into Contacts(fname,responsemail,feedback) value ('Pave','pave@gmail.ru','Tämä minun tuotteeni ei nyt toimi niinkuin pitäisi....');
-insert into Contacts(fname,responsemail,feedback) value ('Maija','','Asiakaspalvelu toimii hyvin, sain tuotteen jonka halusin ja se tuli perille nopeasti');
-
 -- Luo admin taulun
 create table admin (
     id int PRIMARY KEY auto_increment,
