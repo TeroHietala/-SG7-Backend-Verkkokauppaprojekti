@@ -21,7 +21,7 @@ try{
         $pw = $row["password"];
         //purkaa salasanan HASHin
         if(password_verify($password, $pw) ){ 
-            selectAsJson($db, "SELECT cust_nro,first_name,last_name FROM customers WHERE mail_username = '$mail_username'");
+            selectAsJson($db, "SELECT * FROM customers WHERE mail_username = '$mail_username'");
             
         }
     }
@@ -32,20 +32,6 @@ try{
 }catch(PDOException $e){
     echo '<br>'.$e->getMessage();
 }
-
-//$fname = $_SESSION["first_name"];
-// //Tarkistetaan tuleeko palvelimelle basic login tiedot (authorization: Basic asfkjsafdjsajflkasj)
-// if(isset($_SERVER['PHP_AUTH_USER']) ){
-//     //Tarkistetaan käyttäjä tietokannasta
-//     if(openDb($_SERVER['PHP_AUTH_USER'],$_SERVER['PHP_AUTH_PW'],$_SESSION['first_name'])){
-//         $_SESSION['user'] = $_SERVER['PHP_AUTH_USER'];
-//         //$_SESSION["token"] = bin2hex(openssl_random_pseudo_bytes(16));
-//         //print json_encode(array("Tervetuloa", $_SESSION['first_name']));
-//         selectAsJson($db, "SELECT first_name FROM customers WHERE mail_username = '$mail_username'");
-//         //header('Content-Type: application/json');
-//         exit;
-//     }
-// }
 
 //Väärät tunnukset antaa ilmoituksen
 echo '{"info":"Väärä käyttäjätunnus tai salasana"}';
