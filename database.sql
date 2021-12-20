@@ -135,4 +135,34 @@ create table order_row (
     index product_id(product_id),
    	FOREIGN KEY (product_id) references product(id)
        on delete restrict
-)
+);
+
+-- Tuotetiedot päivitetään
+
+UPDATE product SET description = 'Legendaarisen Les Paulin suunnittelema täyttä kokopuuta rokkaava kitaramalli. Kahdella humbucker mikrofonilla varustettu.\r\n\r\n- Mahonkirunko AAA-loimuvaahterakannella\r\n- Mahonkikaula,ruusupuuotelauta\r\n- Skaala 24,50\'\'\r\n- Radius 11\'\'\r\n- 22 Medium Jumbo-nauhaa\r\n- USA Burstbucker mikrofonit, CTS-potikat\r\n- Vintage Deluxe 18:2 virityskoneisto\r\n- Nikkeli metalliosat' WHERE product.id = 1; 
+
+UPDATE product SET description = 'Täydellinen kitara kotisoitteluun tai vaikkapa iltanuotiolle. Ruusupuu otelauta tarjoaa miellyttävän tuntuman.\r\n\r\n- Kansi: Kokopuinen mäntykansi\r\n- Sivut: Mahonkia\r\n- Pohja: Mahonkia\r\n- Otelauta: Ruusupuu\r\n- Kaula: Mahonkia' WHERE product.id = 2; 
+
+UPDATE product SET description = 'Täydellinen rumpusetti jopa vaativampaan rummutteluun. Mukana telinepaketti ja sisältää useamman symbaalin.' WHERE product.id = 3; 
+
+UPDATE product SET description = 'Kompakti sähkörumpusetti esimerkiksi kotona soitteluun. Sisältää tietokoneelle asennettavan ilmaisen rumpusoftan, jossa saatavilla jopa 100 erilaista rumpusoundia.' WHERE product.id = 4;
+
+UPDATE product SET description = 'Huipputunnetun Fenderin valmistama neljäkielinen sähköbasso. Otelauta tehty ruusupuusta.\r\n\r\n- Kansi: Vaahteraa\r\n- Sivut: Mahonkia\r\n- Pohja: Mahonkia\r\n- Kaula: Mahonkia' WHERE product.id = 5;
+
+UPDATE product SET description = 'Yamaha-basso 34 tuuman skaalalla. Soveltyy erityisesti koulukäyttöön sekä aloittavalle soittajalle.' WHERE product.id = 6;
+ 
+UPDATE product SET description = 'Laadukas aloittavan viulistin 1/8 -viulusarja. Mukana jousi ja kotelo, väri tumman ruskea' WHERE product.id = 7; 
+
+UPDATE product SET description = 'Ammattisoittajien suosima Höfner viulu tarjoaa laadukasta soitettavuutta kaikentasoisille viulisteille.' WHERE product.id = 8;
+
+UPDATE product SET description = 'Yamahan akustinen piano tarjoaa klassisen piano soundin ja mielyttävän soittotuntuman.' WHERE product.id = 9; 
+
+UPDATE product SET description = 'Soveltuu erityisesti kotikäyttöön. Pianossa on kuulokepaikka ja MIDI-ulostulo.' WHERE product.id = 10; 
+
+UPDATE discount SET description = 'Klassinen kitaramalli 50-luvulta. Single coil-mikrofonit ja vaahteraotelauta tarjoavat ainutlaatuisen kitarasoundin.\r\n\r\n- Leppärunko\r\n- Vaahterakaula Modern-C profiililla\r\n- Vaahteraotelauta\r\n- 22 Medium Jumbo nauhaa\r\n- 3 x Dimarzio Single-Coil mikrofoni\r\n- 2-Point Synchronized Tremolo-talla\r\n- Standard Cast/Sealed-virityskoneisto' WHERE discount.id = 10000; 
+
+UPDATE discount SET description = 'Edullinen akustinen rumpusetti, sopii sekä aloittelijalle että kokeneemmallekin soittajalle.' WHERE discount.id = 10001; 
+
+UPDATE discount SET description = 'Mahonkirunkoinen Ibanez-sähköbasso 32 tuuman skaalalla ja kahdella Single Coil -mikrofonilla.' WHERE discount.id = 10002;
+
+UPDATE discount SET description = 'Hinta ja laatu kohtaavat tässä 4/4 Stagg-viulussa. Erinomainen valinta esimerkiksi ensimmäiseksi viuluksi. ' WHERE discount.id = 10003; 
